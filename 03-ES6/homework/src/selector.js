@@ -6,12 +6,16 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   if (typeof startEl === "undefined") {
     startEl = document.body;
   }
-  
   // recorre el árbol del DOM y recolecta elementos que matchien en resultSet
   // usa matchFunc para identificar elementos que matchien
 
   // TU CÓDIGO AQUÍ
-  return resultSet ;
+  if(matchFunc(startEl)) resultSet.push(startEl);
+    
+  for ( const child of startEl.children){
+    resultSet.push(...traverseDomAndCollectElements(matchFunc(child), startEl));
+  } 
+  return resultSet;
 };
 
 // Detecta y devuelve el tipo de selector
