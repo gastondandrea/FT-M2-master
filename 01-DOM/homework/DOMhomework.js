@@ -31,7 +31,11 @@ function ToDo(description) {
 // Tu código acá:
 
 ToDo.prototype.completeToDo = function(){
-  this.complete = true;
+  if(!this.complete){
+    this.complete = false;
+  }else{
+    this.complete = true;
+  }
 }
 
 // Agregar dos parámetros a la función 'buildToDo':
@@ -135,7 +139,7 @@ function addToDo() {
 
 // Tu código acá:
 
-  document.querySelector('#addButton').addEventListener('click', addToDo);
+  document.querySelector('#addButton').addEventListener("click", addToDo);
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
@@ -174,9 +178,8 @@ function completeToDo(event) {
 // ********************************************** ----------- ********************************************** //
 
 // Acá debes insertar la llamada a 'displayToDos'
-
-// ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 displayToDos();
+// ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== "undefined") {
   module.exports = {
     toDoItems: toDoItems,
